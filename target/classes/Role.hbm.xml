@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">     
+<hibernate-mapping>
+	<class name="linuxmantra.Auth.beans.Role" table="Auth_Role">
+		<id name="roleId" column="roleId">
+			<generator class="increment"/>
+		</id>
+		<property name="roleName" length="50">
+			<column name="roleName" length="50"></column>
+		</property>
+		<property name="roleDescription"  length="200">
+			<column name="roleDescription"  length="200"> </column>
+		</property>
+		<property name="createdBy" length="50">
+		 	<column name="createdBy" length="50"></column>
+		</property>
+		<property name="creationDate" type="date">
+			<column name="creationDate"></column>
+		</property>
+		<list name="privileges" table="Auth_RolePrivileges">
+			<key column="roleId"></key>
+			<index column="Ord"></index>
+			<element column="privilege" type="string"></element>
+		</list>
+	</class>
+</hibernate-mapping>          
